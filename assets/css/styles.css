@@ -606,3 +606,19 @@ a svg, p svg, h4 svg, span svg { width: 1em; height: 1em; vertical-align: -0.12e
 @media (max-width: 1200px) {
   .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--ivory); }
 }
+
+/* ---------- Helpers replacing inline styles (CSP: no inline styles) ---------- */
+.pull-quote { font-size: 1.45rem; color: var(--plum); }
+.section.section-top-tight { padding-top: clamp(3rem, 6vw, 4.5rem); }
+.text-center { text-align: center; }
+.btn-row-center { justify-content: center; }
+.icon-heading { display: flex; gap: 0.5rem; align-items: center; }
+.pt-0 { padding-top: 0; }
+
+/* ---------- Click-to-load map ---------- */
+.map-consent {
+  min-height: 300px; display: grid; place-content: center; text-align: center; gap: 0.2rem;
+  padding: 2rem 1.5rem; line-height: 1.6;
+  background: linear-gradient(135deg, var(--lavender-soft), var(--sage-soft));
+}
+.map-consent p { max-width: 460px; margin: 0 auto 0.8rem; }

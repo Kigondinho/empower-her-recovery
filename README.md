@@ -17,7 +17,7 @@ Website for Empower Her Recovery Centre, Kenya's first women-only rehabilitation
 | Get Involved | `get-involved.html` |
 | Contact Us | `contact.html` |
 
-Shared styles are in `assets/css/styles.css`, scripts in `assets/js/main.js`, photos in `assets/img/`.
+Shared styles are in `assets/css/styles.css` (fonts in `assets/css/fonts.css` + `assets/fonts/`), scripts in `assets/js/main.js`, photos in `assets/img/`.
 
 ## Run locally
 
@@ -31,10 +31,6 @@ then visit http://localhost:8000.
 
 ## Before going live
 
-- **Phone / WhatsApp number:** the site uses the placeholder `+254 7XX XXX XXX`. Replace it in every `.html` file:
-  - display text `+254 7XX XXX XXX`
-  - phone links `tel:+2547XXXXXXXX`
-  - WhatsApp links `https://wa.me/2547XXXXXXXX` (country code + number, no `+` or spaces)
 - **Photos:** placeholder stock photos from [Unsplash](https://unsplash.com) (free to use under the Unsplash License). Swap in real photos of the centre and team by replacing files in `assets/img/` with the same names.
 - **Founder photo:** `about.html` shows a "WM" placeholder for Wangui Mucara's portrait.
 - **Contact form:** there is no backend yet. Submitting opens the visitor's email app with the message addressed to `info@empowerherrecovery.org`. To receive submissions directly, connect a form service (e.g. Formspree or Netlify Forms).
@@ -42,3 +38,15 @@ then visit http://localhost:8000.
 ## Hosting
 
 Works on any static host. For GitHub Pages: repo **Settings → Pages → Deploy from branch → `main` / root**.
+
+## Security & privacy
+
+This is a static site: no server code, database, logins or stored visitor data, so the attack surface is small. Hardening in place:
+
+- **Content Security Policy** (`<meta>` in every page): only the site's own scripts, styles, fonts and images can load; the only third party allowed is the Google Maps frame. No inline scripts or inline styles.
+- **No third-party tracking by default:** fonts are self-hosted (no requests to Google Fonts) and the Google map only loads after the visitor clicks "Show map". There is no analytics.
+- **Referrer policy** `strict-origin-when-cross-origin`; external links use `rel="noopener noreferrer"`.
+- **Contact form** sends nothing over the network: it opens the visitor's own email app. Without JavaScript it falls back to a `mailto:` action, so details never end up in a URL.
+- **`_headers`** adds HTTP security headers (clickjacking protection, HSTS, nosniff, Permissions-Policy) on Netlify or Cloudflare Pages. GitHub Pages can't set custom headers, so on GitHub Pages the meta-tag protections apply but clickjacking protection (`frame-ancestors`) does not.
+
+If you later add a form backend, analytics or a booking tool, add its domain to the CSP in every page and in `_headers`, and mention it in a privacy notice.

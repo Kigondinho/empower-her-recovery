@@ -65,6 +65,22 @@
     });
   });
 
+  // Google Maps only loads after the visitor asks for it (privacy)
+  document.querySelectorAll(".map-consent").forEach(function (box) {
+    var btn = box.querySelector(".map-load");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var src = box.getAttribute("data-map-src") || "";
+      if (src.indexOf("https://maps.google.com/") !== 0) return;
+      var frame = document.createElement("iframe");
+      frame.src = src;
+      frame.title = "Map showing Kiambu, Kenya";
+      frame.loading = "lazy";
+      frame.referrerPolicy = "strict-origin-when-cross-origin";
+      box.replaceWith(frame);
+    });
+  });
+
   // Footer year
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
