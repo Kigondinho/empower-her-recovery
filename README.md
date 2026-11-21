@@ -17,7 +17,7 @@ Website for Empower Her Recovery Centre, Kenya's first women-only rehabilitation
 | Get Involved | `get-involved.html` |
 | Contact Us | `contact.html` |
 
-Shared styles are in `assets/css/styles.css` (fonts in `assets/css/fonts.css` + `assets/fonts/`), scripts in `assets/js/main.js`, photos in `assets/img/`.
+Shared styles are in `assets/css/styles.css` (fonts in `assets/css/fonts.css` + `assets/fonts/`), scripts in `assets/js/main.js`, photos in `assets/img/` (guide: [PHOTOS.md](PHOTOS.md)).
 
 ## Run locally
 
@@ -31,8 +31,7 @@ then visit http://localhost:8000.
 
 ## Before going live
 
-- **Photos:** placeholder stock photos from [Unsplash](https://unsplash.com) (free to use under the Unsplash License). Swap in real photos of the centre and team by replacing files in `assets/img/` with the same names.
-- **Founder photo:** `about.html` shows a "WM" placeholder for Wangui Mucara's portrait.
+- **Photos:** all photos are placeholder stock images from [Unsplash](https://unsplash.com), and the founder and team spots show initials. **See [PHOTOS.md](PHOTOS.md)** for where every photo appears, the right size and shape, and step-by-step instructions for swapping in real photos.
 - **Contact form:** there is no backend yet. Submitting opens the visitor's email app with the message addressed to `info@empowerherrecovery.org`. To receive submissions directly, connect a form service (e.g. Formspree or Netlify Forms).
 
 ## Hosting
